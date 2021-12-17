@@ -4,31 +4,48 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class PostsController : ControllerBase
     {
         private readonly IPostService _postService;
 
         // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public PostsController(IPostService postService)
         {
             _postService = postService;
         }
 
+        [SwaggerOperation(Summary = "Retrieves all posts")]
         [HttpGet]
         public IActionResult Get()
         {
             var posts = _postService.GetAllPosts();
             return Ok(posts);
+        }
+
+        [SwaggerOperation(Summary = "Retrieves a specific post by unique id")]
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var post = _postService.GetPostById(id);
+            if(post == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(post);
         }
     }
 }

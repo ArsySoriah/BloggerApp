@@ -9,5 +9,6 @@ namespace Application.Interfaces
     {
         IEnumerable<PostDto> GetAllPosts();
         PostDto GetPostById(int id);
+        PostDto AddNewPost(CreatePostDto newPost);
     }
 }

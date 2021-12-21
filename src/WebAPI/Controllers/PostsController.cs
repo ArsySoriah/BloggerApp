@@ -41,7 +41,7 @@ namespace WebAPI.Controllers
         public IActionResult Get(int id)
         {
             var post = _postService.GetPostById(id);
-            if(post == null)
+            if (post == null)
             {
                 return NotFound();
             }
@@ -62,6 +62,14 @@ namespace WebAPI.Controllers
         public IActionResult Update(UpdatePostDto updatePost)
         {
             _postService.UpdatePost(updatePost);
+            return NoContent();
+        }
+
+        [SwaggerOperation(Summary = "Update an existing post")]
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _postService.DeletePost(id);
             return NoContent();
         }
     }

@@ -22,7 +22,6 @@ namespace Infrastructure.Repositories
 
         public Post GetById(int id)
         {
-            //nie rozumiem tego
             return _posts.SingleOrDefault(x => x.Id == id);
         }
 

@@ -1,14 +1,19 @@
 ﻿using System;
+using Application.Mappings;
+using AutoMapper;
+using Domain.Entities;
+
 namespace Application.Dto
 {
-    public class PostDto
+    public class PostDto : IMap
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
 
-        public PostDto()
+        public void Mapping(Profile profile)
         {
+            profile.CreateMap<Post, PostDto>();
         }
     }
 }

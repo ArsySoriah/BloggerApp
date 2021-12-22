@@ -13,6 +13,7 @@
     <None Remove="Services\" />
     <None Remove="AutoMapper" />
     <None Remove="Mappings\" />
+    <None Remove="Microsoft.Extensions.DependencyInjection.Abstractions" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -22,5 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
 </Project>

@@ -17,12 +17,6 @@ namespace WebAPI.Controllers
     {
         private readonly IPostService _postService;
 
-        // GET: /<controller>/
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
         public PostsController(IPostService postService)
         {
             _postService = postService;
@@ -47,6 +41,26 @@ namespace WebAPI.Controllers
             }
 
             return Ok(post);
+        }
+
+        [SwaggerOperation(Summary = "Retrieves a specific post by unique text from title")]
+        [HttpGet("Search/{title}")]
+        public IActionResult GetByText(string title)
+        {
+            ISet<PostDto> postsToReturn = new HashSet<PostDto>();
+            var posts = _postService.GetAllPosts();
+
+            foreach (var post in posts)
+            {
+                StringComparison[] comparisons = (StringComparison[])Enum.GetValues(typeof(StringComparison));
+
+                if (post.Title.Contains(title,comparisons[1]))
+                {
+                    postsToReturn.Add(post);
+                }
+            }
+
+            return Ok(postsToReturn);
         }
 
         [SwaggerOperation(Summary = "Create a new post")]

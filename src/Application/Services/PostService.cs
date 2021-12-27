@@ -26,7 +26,7 @@ namespace Application.Services
             return _mapper.Map<IEnumerable<PostDto>>(posts);
         }
 
-            public PostDto GetPostById(int id)
+        public PostDto GetPostById(int id)
         {
             var post = _postRepository.GetById(id);
             return _mapper.Map<PostDto>(post);

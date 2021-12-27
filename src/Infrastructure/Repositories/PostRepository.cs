@@ -10,9 +10,12 @@ namespace Infrastructure.Repositories
     {
         private static readonly ISet<Post> _posts = new HashSet<Post>()
         {
-            new Post(1, "Tytuł 1", "Treść 1"),
-            new Post(2, "Tytuł 2", "Treść 2"),
-            new Post(3, "Tytuł 3", "Treść 3")
+            //new Post(1, "Tytuł 1", "Treść 1"),
+            //new Post(2, "Tytuł 2", "Treść 2"),
+            //new Post(3, "Tytuł 3", "Treść 3")
+            new Post(1, "Jak zostać programistą", "..."),
+            new Post(2, "Ile zarabia programista", "..."),
+            new Post(3, "Dlaczego warto zostać programistą", "...")
         };
 
         public IEnumerable<Post> GetAll()

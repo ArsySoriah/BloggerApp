@@ -19,14 +19,20 @@
     <None Remove="Swashbuckle.AspNetCore.Annotations" />
     <None Remove="Swashbuckle.AspNetCore.SwaggerUI" />
     <None Remove="Installers\" />
+    <None Remove="Controllers\V1\" />
+    <None Remove="Controllers\V2\" />
+    <None Remove="Microsoft.AspNetCore.Mvc.Versioning" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Installers\" />
+    <Folder Include="Controllers\V1\" />
+    <Folder Include="Controllers\V2\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle" Version="5.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
   </ItemGroup>
 </Project>

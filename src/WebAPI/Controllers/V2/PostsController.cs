@@ -9,19 +9,15 @@ using Swashbuckle.AspNetCore.Annotations;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.V2
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [ApiVersion("2.0")]
     [Route("api/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase
     {
         private readonly IPostService _postService;
-
-        // GET: /<controller>/
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
 
         public PostsController(IPostService postService)
         {
@@ -33,7 +29,12 @@ namespace WebAPI.Controllers
         public IActionResult Get()
         {
             var posts = _postService.GetAllPosts();
-            return Ok(posts);
+            return Ok(
+                new
+                {
+                    Posts = posts,
+                    Count = posts.Count()
+                });
         }
 
         [SwaggerOperation(Summary = "Retrieves a specific post by unique id")]

@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Domain.Entities;
 
 namespace Domain.Interfaces
 {
     public interface IPostRepository
     {
-        IEnumerable<Post> GetAll();
-        Post GetById(int id);
-        Post Add(Post post);
-        void Update(Post post);
-        void Delete(Post post);
+        Task<IEnumerable<Post>> GetAllAsync();
+        Task<Post> GetByIdAsync(int id);
+        Task<Post> AddAsync(Post post);
+        Task UpdateAsync(Post post);
+        Task DeleteAsync(Post post);
     }
 }

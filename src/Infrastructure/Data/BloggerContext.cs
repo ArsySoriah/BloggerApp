@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Domain.Common;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ namespace Infrastructure.Data
 
         public DbSet<Post> Posts { get; set; }
 
-        public override int SaveChanges()
+        public async Task<int> SaveChangesAsync()
         {
             var entries = ChangeTracker
                 .Entries()
@@ -30,7 +31,7 @@ namespace Infrastructure.Data
                 }
             }
 
-            return base.SaveChanges();
+            return await base.SaveChangesAsync();
         }
     }
 }
